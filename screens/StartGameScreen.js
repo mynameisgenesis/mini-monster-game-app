@@ -5,17 +5,16 @@ import PrimaryButton from "../components/PrimaryButton";
 function StartGameScreen() {
   const [enteredNumber, setEnteredNumber] = useState("");
 
-  function numberInputHandler(inputText) {
-    setEnteredNumber(inputText);
+  function numberInputHandler(enteredText) {
+    setEnteredNumber(enteredText);
   }
 
-  function resetInputHandler(params) {
+  function resetInputHandler() {
     setEnteredNumber("");
   }
 
   function confirmInputHandler() {
     const choosenNumber = parseInt(enteredNumber);
-
     if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 99) {
       Alert.alert("Invalid Number", "Number needs to be between 1 and 99.", [
         { text: "Okay", style: "destructive", onPress: resetInputHandler },
@@ -34,7 +33,7 @@ function StartGameScreen() {
         keyboardType="number-pad"
         autoCapitalize="none"
         autoCorrect={false}
-        onChange={numberInputHandler}
+        onChangeText={numberInputHandler}
         value={enteredNumber}
       />
       {/* This view creates a new flexbox, that is why it is centered and the buttons resize */}
