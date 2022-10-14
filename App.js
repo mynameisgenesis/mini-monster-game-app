@@ -10,18 +10,21 @@ export default function App() {
     setUserNumber(selectedNumber);
   }
 
-  let screen = <StartGameScreen />;
+  let screen = (
+    <StartGameScreen selectedNumberHandler={selectedNumberHandler} />
+  );
 
   if (userNumber) {
     screen = <GameScreen />;
   }
+
   return (
     <ImageBackground
       source={require("./assets/images/background.jpg")}
       resizeMode="cover"
       style={styles.rootScreen}
     >
-      <StartGameScreen />
+      {screen}
     </ImageBackground>
   );
 }
