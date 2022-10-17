@@ -17,9 +17,11 @@ function StartGameScreen({ selectedNumberHandler }) {
   function confirmInputHandler() {
     const choosenNumber = parseInt(enteredNumber);
     if (isNaN(choosenNumber) || choosenNumber <= 0 || choosenNumber > 99) {
-      Alert.alert("Invalid Number", "Number needs to be between 1 and 99.", [
-        { text: "Okay", style: "destructive", onPress: resetInputHandler },
-      ]);
+      Alert.alert(
+        "🚨 Invalid Number 🚨",
+        "Number needs to be between 1 and 99.",
+        [{ text: "Okay 👍", style: "destructive", onPress: resetInputHandler }]
+      );
       return;
     }
 
@@ -76,6 +78,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     marginVertical: 8,
     fontWeight: "bold",
+    color: Colors.white,
   },
   buttonsContainer: {
     flexDirection: "row",
