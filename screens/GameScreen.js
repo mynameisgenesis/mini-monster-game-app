@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
+// View different icon sets: https://icons.expo.fyi/
 import { Feather } from "@expo/vector-icons";
 import NumberContainer from "../components/game/NumberContainer";
 import PrimaryButton from "../components/ui/PrimaryButton";
@@ -64,6 +65,7 @@ function GreenScreen({ userNumber, gameOverHandler }) {
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}>
+              {/* How to use: https://docs.expo.dev/guides/icons/ */}
               <Feather name="minus" size={32} />
             </PrimaryButton>
           </View>
@@ -84,7 +86,6 @@ export default GreenScreen;
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 24,
   },
   buttonsContainer: {
     flexDirection: "row",

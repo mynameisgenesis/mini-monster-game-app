@@ -32,7 +32,7 @@ function StartGameScreen({ selectedNumberHandler }) {
   }
 
   return (
-    <View style={styles.rootContainer}>
+    <View>
       <Title>Guess My Number</Title>
       <Card>
         <InstructionText>Enter a Number</InstructionText>
@@ -70,11 +70,6 @@ function StartGameScreen({ selectedNumberHandler }) {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  rootContainer: {
-    flex: 1,
-    marginTop: 100,
-    alignItems: "center",
-  },
   numberInput: {
     height: 50,
     width: 50,

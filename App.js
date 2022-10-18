@@ -1,4 +1,7 @@
 import { useState } from "react";
+//How to use: https://docs.expo.dev/versions/latest/sdk/font/
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 import { StyleSheet, ImageBackground, SafeAreaView } from "react-native";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
@@ -9,6 +12,15 @@ import GameOverScreen from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+
+  //useFonts returns and array that we can destructer and pull of fontsLoaded boolean
+  const [fontsLoaded] = useFonts({
+    lovecraft: require("./assets/fonts/lovecraft.otf"),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   function selectedNumberHandler(selectedNumber) {
     setUserNumber(selectedNumber);
