@@ -37,6 +37,7 @@ function StartGameScreen({ selectedNumberHandler }) {
       <Card>
         <InstructionText>Enter a Number</InstructionText>
         <TextInput
+          testID="user-number-input"
           style={styles.numberInput}
           maxLength={2}
           keyboardType="number-pad"
@@ -48,10 +49,17 @@ function StartGameScreen({ selectedNumberHandler }) {
         {/* This view creates a new flexbox, that is why it is centered and the buttons resize */}
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+            <PrimaryButton testID="reset-button" onPress={resetInputHandler}>
+              Reset
+            </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
-            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+            <PrimaryButton
+              testID="confirm-button"
+              onPress={confirmInputHandler}
+            >
+              Confirm
+            </PrimaryButton>
           </View>
         </View>
       </Card>

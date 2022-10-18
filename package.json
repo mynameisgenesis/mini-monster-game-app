@@ -25,16 +25,9 @@
     "react-test-renderer": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.12.9"
+    "@babel/core": "7.12.9",
+    "@testing-library/react-native": "^11.3.0",
+    "@types/jest": "^29.2.0"
   },
-  "private": true,
-  "jest": {
-    "preset": "react-native",
-    "cacheDirectory": "./cache",
-    "coverageThreshold": {
-      "global": {
-        "statements": 80
-      }
-    }
-  }
+  "private": true
 }
