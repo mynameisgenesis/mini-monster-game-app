@@ -2,6 +2,9 @@ import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
 import Colors from "../utils/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Title from "../components/ui/Title";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen({ selectedNumberHandler }) {
   const [enteredNumber, setEnteredNumber] = useState("");
@@ -29,25 +32,29 @@ function StartGameScreen({ selectedNumberHandler }) {
   }
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.numberInput}
-        maxLength={2}
-        keyboardType="number-pad"
-        autoCapitalize="none"
-        autoCorrect={false}
-        onChangeText={numberInputHandler}
-        value={enteredNumber}
-      />
-      {/* This view creates a new flexbox, that is why it is centered and the buttons resize */}
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <Card>
+        <InstructionText>Enter a Number</InstructionText>
+        <TextInput
+          style={styles.numberInput}
+          maxLength={2}
+          keyboardType="number-pad"
+          autoCapitalize="none"
+          autoCorrect={false}
+          onChangeText={numberInputHandler}
+          value={enteredNumber}
+        />
+        {/* This view creates a new flexbox, that is why it is centered and the buttons resize */}
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
+          </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={confirmInputHandler}>Confirm</PrimaryButton>
-        </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -55,18 +62,9 @@ function StartGameScreen({ selectedNumberHandler }) {
 export default StartGameScreen;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    padding: 16,
-    marginHorizontal: 25,
-    borderRadius: 10,
+  rootContainer: {
+    flex: 1,
     marginTop: 100,
-    backgroundColor: Colors.primary,
-    elevation: 4, //Adds shadow to Android
-    shadowColor: Colors.black, //Property for iOS
-    shadowOffset: { width: 0, height: 2 }, //Property for iOS
-    shadowRadius: 6, //Property for iOS
-    shadowOpacity: 0.25, //Property for iOS
-    justifyContent: "center",
     alignItems: "center",
   },
   numberInput: {
