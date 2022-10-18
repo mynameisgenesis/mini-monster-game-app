@@ -1,14 +1,14 @@
 import React from "react";
-import StartGameScreen from "../StartGameScreen";
+// import { create, act } from "react-test-renderer";
+import GameOverScreen from "../GameOverScreen";
 import { render, cleanup } from "@testing-library/react-native";
 
 jest.useFakeTimers();
 jest.runAllTimers();
 
-describe("StartGameScreen", () => {
+describe("GameOverScreen", () => {
   afterEach(cleanup);
   test("renders correctly", () => {
-    expect(render(<StartGameScreen selectedNumberHandler={jest.fn()} />))
-      .toMatchSnapshot;
+    expect(render(<GameOverScreen />)).toMatchSnapshot;
   });
 });

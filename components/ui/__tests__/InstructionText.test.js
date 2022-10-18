@@ -1,14 +1,13 @@
 import React from "react";
-import StartGameScreen from "../StartGameScreen";
+import InstructionText from "../InstructionText";
 import { render, cleanup } from "@testing-library/react-native";
 
 jest.useFakeTimers();
 jest.runAllTimers();
 
-describe("StartGameScreen", () => {
+describe("InstructionText", () => {
   afterEach(cleanup);
   test("renders correctly", () => {
-    expect(render(<StartGameScreen selectedNumberHandler={jest.fn()} />))
-      .toMatchSnapshot;
+    expect(render(<InstructionText />)).toMatchSnapshot;
   });
 });

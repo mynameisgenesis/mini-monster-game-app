@@ -1,14 +1,13 @@
 import React from "react";
-import StartGameScreen from "../StartGameScreen";
+import NumberContainer from "../NumberContainer";
 import { render, cleanup } from "@testing-library/react-native";
 
 jest.useFakeTimers();
 jest.runAllTimers();
 
-describe("StartGameScreen", () => {
+describe("NumberContainer", () => {
   afterEach(cleanup);
   test("renders correctly", () => {
-    expect(render(<StartGameScreen selectedNumberHandler={jest.fn()} />))
-      .toMatchSnapshot;
+    expect(render(<NumberContainer />)).toMatchSnapshot;
   });
 });

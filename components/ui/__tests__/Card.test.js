@@ -1,14 +1,13 @@
 import React from "react";
-import StartGameScreen from "../StartGameScreen";
+import Card from "../Card";
 import { render, cleanup } from "@testing-library/react-native";
 
 jest.useFakeTimers();
 jest.runAllTimers();
 
-describe("StartGameScreen", () => {
+describe("Card", () => {
   afterEach(cleanup);
   test("renders correctly", () => {
-    expect(render(<StartGameScreen selectedNumberHandler={jest.fn()} />))
-      .toMatchSnapshot;
+    expect(render(<Card />)).toMatchSnapshot;
   });
 });
