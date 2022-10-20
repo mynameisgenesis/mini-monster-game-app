@@ -12,10 +12,13 @@ import GameOverScreen from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
+  const [rounds, setRounds] = useState(0);
 
   //useFonts returns and array that we can destructer and pull of fontsLoaded boolean
   const [fontsLoaded] = useFonts({
-    lovecraft: require("./assets/fonts/lovecraft.otf"),
+    Allenisa: require("./assets/fonts/Allenisa.otf"),
+    CaviarDreams: require("./assets/fonts/CaviarDreams.ttf"),
+    "CaviarDreams-Bold": require("./assets/fonts/CaviarDreams_Bold.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -25,6 +28,11 @@ export default function App() {
   function selectedNumberHandler(selectedNumber) {
     setUserNumber(selectedNumber);
     setGameIsOver(false);
+  }
+
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setRounds(0);
   }
 
   let screen = (
@@ -42,7 +50,13 @@ export default function App() {
   }
 
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        rounds={rounds}
+        userNumber={userNumber}
+        startNewGameHandler={startNewGameHandler}
+      />
+    );
   }
 
   return (

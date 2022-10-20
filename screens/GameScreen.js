@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert, FlatList } from "react-native";
 // View different icon sets: https://icons.expo.fyi/
 import { Feather } from "@expo/vector-icons";
 import NumberContainer from "../components/game/NumberContainer";
@@ -24,12 +24,18 @@ function GreenScreen({ userNumber, gameOverHandler }) {
 
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [guesses, setGuesses] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
       gameOverHandler();
     }
   }, [currentGuess, userNumber, gameOverHandler]);
+
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
 
   function nextGuessHandler(direction) {
     if (
@@ -52,6 +58,7 @@ function GreenScreen({ userNumber, gameOverHandler }) {
       currentGuess
     );
     setCurrentGuess(newRandomNumber);
+    setGuesses((previousGuesses) => [newRandomNumber, ...previousGuesses]);
   }
 
   return (
@@ -66,17 +73,25 @@ function GreenScreen({ userNumber, gameOverHandler }) {
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "higher")}>
               {/* How to use: https://docs.expo.dev/guides/icons/ */}
-              <Feather name="minus" size={32} />
+              <Feather name="plus" size={32} />
             </PrimaryButton>
           </View>
           <View style={styles.buttonContainer}>
             <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-              <Feather name="plus" size={32} />
+              <Feather name="minus" size={32} />
             </PrimaryButton>
           </View>
         </View>
       </Card>
-      {/* <View>Log Rounds</View> */}
+      <View>
+        {/* {guesses.map((guess) => (
+          <Text key={guess}>{guess}</Text>
+        ))} */}
+        <FlatList
+          data={guesses}
+          renderItem={({ item, index }) => <Text key={index}>{item}</Text>}
+        />
+      </View>
     </View>
   );
 }

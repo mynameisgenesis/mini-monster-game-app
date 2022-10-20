@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   title: {
-    fontFamily: "lovecraft",
+    fontFamily: "Allenisa",
     fontSize: 45,
     fontWeight: "bold",
     color: Colors.white,
