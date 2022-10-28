@@ -2,7 +2,11 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import Colors from "../utils/colors";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
-function GameOverScreen({ rounds, userNumber, startNewGameHandler }) {
+export default function GameOverScreen({
+  rounds,
+  userNumber,
+  startNewGameHandler,
+}) {
   return (
     <View style={styles.rootContainer}>
       <View style={styles.imageContainer}>
@@ -21,8 +25,6 @@ function GameOverScreen({ rounds, userNumber, startNewGameHandler }) {
     </View>
   );
 }
-
-export default GameOverScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {

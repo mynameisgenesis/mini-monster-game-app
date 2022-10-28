@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import Colors from "../../utils/colors";
 
-function NumberContainer({ children }) {
+export default function NumberContainer({ children }) {
   return (
     <View style={styles.container}>
       <Text style={styles.numberText}>{children}</Text>
@@ -9,14 +9,11 @@ function NumberContainer({ children }) {
   );
 }
 
-export default NumberContainer;
-
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.primary,
     padding: 24,
     borderRadius: 10,
-    margin: 24,
     alignItems: "center",
     justifyContent: "center",
   },

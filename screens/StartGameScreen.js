@@ -6,7 +6,7 @@ import Title from "../components/ui/Title";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
 
-function StartGameScreen({ selectedNumberHandler }) {
+export default function StartGameScreen({ selectedNumberHandler }) {
   const [enteredNumber, setEnteredNumber] = useState("");
 
   function numberInputHandler(enteredText) {
@@ -66,8 +66,6 @@ function StartGameScreen({ selectedNumberHandler }) {
     </View>
   );
 }
-
-export default StartGameScreen;
 
 const styles = StyleSheet.create({
   numberInput: {

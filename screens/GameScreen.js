@@ -7,6 +7,7 @@ import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+import GuessLogItem from "../components/game/GuessLogItem";
 
 function generateRandomBetween(min, max, exclude) {
   const randomNumber = Math.floor(Math.random() * (max - min)) + min;
@@ -18,7 +19,7 @@ function generateRandomBetween(min, max, exclude) {
   }
 }
 
-function GreenScreen({ userNumber, gameOverHandler }) {
+export default function GreenScreen({ userNumber, gameOverHandler }) {
   let minBoundary = 1;
   let maxBoundary = 100;
 
@@ -61,6 +62,8 @@ function GreenScreen({ userNumber, gameOverHandler }) {
     setGuesses((previousGuesses) => [newRandomNumber, ...previousGuesses]);
   }
 
+  const guessRoundsListLength = guesses.length;
+
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
@@ -89,18 +92,25 @@ function GreenScreen({ userNumber, gameOverHandler }) {
         ))} */}
         <FlatList
           data={guesses}
-          renderItem={({ item, index }) => <Text key={index}>{item}</Text>}
+          renderItem={({ item, index }) => (
+            <GuessLogItem
+              key={index}
+              roundNumber={guessRoundsListLength - index}
+              guess={item}
+            >
+              {item}
+            </GuessLogItem>
+          )}
         />
       </View>
     </View>
   );
 }
 
-export default GreenScreen;
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    padding: 25,
   },
   buttonsContainer: {
     flexDirection: "row",

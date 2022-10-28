@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import Colors from "../../utils/colors";
 
-function Title({ children }) {
+export default function Title({ children }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{children}</Text>
@@ -9,11 +9,9 @@ function Title({ children }) {
   );
 }
 
-export default Title;
-
 const styles = StyleSheet.create({
   container: {
-    padding: 24,
+    marginVertical: 20,
   },
   title: {
     fontFamily: "Allenisa",
